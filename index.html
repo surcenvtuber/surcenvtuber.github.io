@@ -43,7 +43,7 @@ img{max-width:100%;display:block}
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:40;background:rgba(251,247,250,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;font-family:"Zen Maru Gothic";font-weight:900;font-size:19px;text-decoration:none;color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Zen Maru Gothic";font-weight:900;font-size:23px;letter-spacing:.02em;text-decoration:none;color:var(--ink)}
 .brand img{width:30px;height:30px;object-fit:contain}
 .nav nav{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .nav nav a{
@@ -105,14 +105,14 @@ section{padding:66px 0;border-top:1px solid var(--line)}
 .filters button:hover{border-color:var(--pink);color:var(--pink-deep)}
 .filters button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .gallery{
-  display:grid;gap:16px;
-  grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+  display:grid;gap:16px;align-items:start;
+  grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
 }
 .shot{
   border:0;padding:0;background:var(--veil);cursor:zoom-in;
-  border-radius:var(--r-sm);overflow:hidden;aspect-ratio:1/1;
+  border-radius:var(--r-sm);overflow:hidden;
 }
-.shot img{width:100%;height:100%;object-fit:cover}
+.shot img{width:100%;height:auto;display:block}
 .shot:hover img{transform:scale(1.03)}
 .shot img{transition:transform .35s ease}
 
@@ -221,8 +221,7 @@ footer small{color:var(--ink-soft);font-size:13.5px}
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="images/surcen5.png" alt=""
-      onerror="this.onerror=null;this.src='https://surcen.weebly.com/uploads/1/4/6/1/146183317/surcen5.png'">Surcen</a>
+    <a class="brand" href="#top">Surcen</a>
     <nav>
       <a href="#work">Work</a>
       <a href="#pricing">Pricing</a>
