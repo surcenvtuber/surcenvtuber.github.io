@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surcen — 3D VRoid model artist</title>
+<meta name="description" content="Surcen makes VRoid models, outfits and hair presets for VTubers. Commission prices, turnaround times and terms.">
+<meta property="og:title" content="Surcen — 3D VRoid model artist">
+<meta property="og:description" content="VRoid models, outfits and hair presets for VTubers.">
+<meta property="og:image" content="images/surcen5.png">
+<link rel="icon" href="images/surcen5.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF7FA;
+  --paper:#FFFFFF;
+  --veil:#F3ECF6;
+  --ink:#3A2B45;
+  --ink-soft:#6B5A78;
+  --pink:#E86AA6;
+  --pink-deep:#C74E88;
+  --cyan:#6EC9D8;
+  --line:#E9DDEF;
+  --shadow:0 18px 40px -24px rgba(58,43,69,.45);
+  --r-lg:22px;
+  --r-sm:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,"Zen Maru Gothic",system-ui,sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:"Zen Maru Gothic",Inter,sans-serif;font-weight:700;line-height:1.25;letter-spacing:.01em;margin:0}
+a{color:var(--pink-deep)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+img{max-width:100%;display:block}
+.wrap{width:min(1080px,92vw);margin:0 auto}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:40;background:rgba(251,247,250,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Zen Maru Gothic";font-weight:900;font-size:19px;text-decoration:none;color:var(--ink)}
+.brand img{width:30px;height:30px;object-fit:contain}
+.nav nav{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav nav a{
+  text-decoration:none;color:var(--ink-soft);font-size:14.5px;font-weight:500;
+  padding:7px 12px;border-radius:999px;
+}
+.nav nav a:hover{color:var(--ink);background:var(--veil)}
+.nav nav a.cta{background:var(--pink);color:#fff;font-weight:600}
+.nav nav a.cta:hover{background:var(--pink-deep);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:52px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,60px);font-weight:900;letter-spacing:-.01em}
+.hero h1 span{display:block}
+.tagline{margin:18px 0 0;font-size:18px;color:var(--ink-soft);max-width:34em}
+.status{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  padding:7px 15px 7px 12px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);
+  font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);
+}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(110,201,216,.24)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-block;padding:13px 24px;border-radius:999px;text-decoration:none;
+  font-weight:600;font-size:15px;border:1px solid transparent;
+}
+.btn-primary{background:var(--pink);color:#fff}
+.btn-primary:hover{background:var(--pink-deep)}
+.btn-ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink-deep)}
+
+.hero-art{position:relative}
+.hero-art::before{
+  content:"";position:absolute;inset:-8% -6%;border-radius:50%;
+  background:radial-gradient(circle at 60% 40%,rgba(232,106,166,.20),rgba(110,201,216,.16) 55%,transparent 72%);
+  filter:blur(28px);z-index:0;
+}
+.hero-art img{
+  position:relative;z-index:1;width:100%;border-radius:var(--r-lg);
+  border:1px solid var(--line);box-shadow:var(--shadow);
+  image-rendering:pixelated;background:#1b1030;
+}
+
+/* ---------- sections ---------- */
+section{padding:66px 0;border-top:1px solid var(--line)}
+.head{max-width:46em;margin-bottom:34px}
+.head h2{font-size:clamp(26px,3.4vw,36px)}
+.head p{margin:12px 0 0;color:var(--ink-soft)}
+
+/* ---------- portfolio ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{
+  font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;
+  padding:8px 17px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink-soft);
+}
+.filters button:hover{border-color:var(--pink);color:var(--pink-deep)}
+.filters button[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gallery{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+}
+.shot{
+  border:0;padding:0;background:var(--veil);cursor:zoom-in;
+  border-radius:var(--r-sm);overflow:hidden;aspect-ratio:1/1;
+}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot:hover img{transform:scale(1.03)}
+.shot img{transition:transform .35s ease}
+
+/* ---------- pricing ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--paper);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+caption{text-align:left;padding:18px 22px 0;color:var(--ink-soft);font-size:14px}
+th,td{padding:16px 22px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{
+  font-family:"Zen Maru Gothic";font-size:15px;font-weight:700;
+  background:var(--veil);color:var(--ink);border-bottom:1px solid var(--line);
+}
+tbody th{font-family:"Zen Maru Gothic";font-weight:700;font-size:16px;white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.price{font-size:17px;font-weight:600;display:block}
+.time{font-size:13.5px;color:var(--ink-soft)}
+.note{margin:14px 0 0;font-size:14px;color:var(--ink-soft)}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:26px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px}
+.panel h3{font-size:18px;margin-bottom:12px}
+.panel ul{margin:0;padding-left:18px}
+.panel li{margin:8px 0}
+.panel li b{font-weight:600;color:var(--pink-deep)}
+
+/* ---------- terms ---------- */
+.banner{
+  background:linear-gradient(100deg,rgba(232,106,166,.10),rgba(110,201,216,.12));
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 26px;margin-bottom:26px;
+}
+.banner p{margin:0;font-size:15.5px}
+details{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:10px;overflow:hidden}
+summary{
+  cursor:pointer;list-style:none;padding:16px 22px;
+  font-family:"Zen Maru Gothic";font-weight:700;font-size:16.5px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--pink);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details[open] summary{border-bottom:1px solid var(--line)}
+details ul{margin:0;padding:14px 22px 20px 40px}
+details li{margin:8px 0}
+
+/* ---------- apply ---------- */
+.need{background:var(--veil);border-radius:var(--r-lg);padding:24px 26px;margin-bottom:34px}
+.need h3{font-size:18px;margin-bottom:10px}
+.need ul{margin:0;padding-left:18px}
+.need li{margin:7px 0}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{
+  counter-increment:s;position:relative;padding:0 0 26px 58px;
+  border-left:2px solid var(--line);margin-left:17px;
+}
+.steps li:last-child{border-left-color:transparent;padding-bottom:0}
+.steps li::before{
+  content:counter(s);position:absolute;left:-19px;top:-2px;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--pink);color:#fff;
+  font-family:"Zen Maru Gothic";font-weight:700;font-size:16px;
+  display:grid;place-items:center;
+}
+.steps h3{font-size:17px;margin-bottom:6px}
+.steps p{margin:0 0 8px}
+.steps ul{margin:0;padding-left:18px}
+.steps li li{padding:0;margin:6px 0;border:0;counter-increment:none}
+.steps li li::before{content:none}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:52px 0 60px;text-align:center}
+.social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+.social a{
+  text-decoration:none;font-weight:600;font-size:15px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:11px 22px;
+}
+.social a:hover{border-color:var(--pink);color:var(--pink-deep)}
+footer small{color:var(--ink-soft);font-size:13.5px}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:90;display:none;
+  background:rgba(46,33,56,.82);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:5vh 5vw;
+}
+.lb[open],.lb.on{display:flex}
+.lb img{max-width:100%;max-height:90vh;width:auto;border-radius:var(--r-sm);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.lb button{
+  position:absolute;top:20px;right:24px;font:inherit;font-size:26px;line-height:1;
+  background:#fff;color:var(--ink);border:0;border-radius:50%;width:44px;height:44px;cursor:pointer;
+}
+
+@media (max-width:820px){
+  .hero{padding:40px 0 48px}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .hero-art{order:-1}
+  section{padding:52px 0}
+  th,td{padding:13px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="images/surcen5.png" alt="">Surcen</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#terms">Terms</a>
+      <a class="cta" href="#apply">Start a commission</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="border-top:0">
+    <div class="wrap">
+      <div>
+        <a class="status" href="https://trello.com/b/0qJ7U0bc/surcenvtuber-commissions" target="_blank" rel="noopener">
+          <span class="dot"></span>See the current queue
+        </a>
+        <h1><span>3D VRoid</span><span>model artist</span></h1>
+        <p class="tagline">I make VRoid models, outfits and hair presets for VTubers — built to work in VSeeFace, VRChat and MMD, and handed over ready to use.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#apply">Start a commission</a>
+          <a class="btn btn-ghost" href="#work">See the work</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="images/surcen2_orig.gif" alt="Pixel art of Surcen's studio: a desk with two monitors, a VTuber model on screen, and a cat.">
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head">
+        <h2>Work</h2>
+        <p>Past commissions and hair presets. Click any image to see it full size.</p>
+      </div>
+      <div class="filters" role="tablist" aria-label="Filter work">
+        <button role="tab" data-cat="all" aria-selected="true">Everything</button>
+        <button role="tab" data-cat="full" aria-selected="false">Full models</button>
+        <button role="tab" data-cat="outfit" aria-selected="false">Outfits</button>
+        <button role="tab" data-cat="hair" aria-selected="false">Hair presets</button>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="head">
+        <h2>Pricing and turnaround</h2>
+        <p>Every commission is quoted individually — the figures below are the starting point, and the wait depends on how full the queue is.</p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <caption>Prices in USD. Times start counting once payment clears.</caption>
+          <thead>
+            <tr><th scope="col">Commission</th><th scope="col">Basic</th><th scope="col">Standard</th><th scope="col">Complex</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Hair preset</th>
+              <td><span class="price">400+</span><span class="time">about 1 week</span></td>
+              <td><span class="price">700+</span><span class="time">about 2 weeks</span></td>
+              <td><span class="price">1000+</span><span class="time">about 3 weeks</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Outfit</th>
+              <td><span class="price">400+</span><span class="time">about 2 weeks</span></td>
+              <td><span class="price">700+</span><span class="time">about 3 weeks</span></td>
+              <td><span class="price">1000+</span><span class="time">about 4 weeks</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Full model</th>
+              <td><span class="price">800+</span><span class="time">2–3 weeks</span></td>
+              <td><span class="price">1400+</span><span class="time">3–4 weeks</span></td>
+              <td><span class="price">2000+</span><span class="time">4–6 weeks</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Times vary with the complexity of the model and how many commissions are ahead of yours. You can follow the queue and your model's progress on the <a href="https://trello.com/b/0qJ7U0bc/surcenvtuber-commissions" target="_blank" rel="noopener">Trello board</a>.</p>
+
+      <div class="two">
+        <div class="panel">
+          <h3>Add-ons</h3>
+          <ul>
+            <li><b>200 USD</b> — VRoid model with skin and hair textures only</li>
+            <li><b>40 USD</b> — Perfect Sync blendshapes, for iFacialMocap and MeowFace</li>
+            <li><b>10 USD</b> — toggles on accessories</li>
+            <li><b>Free for full model clients</b> — special effects such as glow, metallics and transparency</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Other charges</h3>
+          <ul>
+            <li><b>+30 USD</b> and a revision fee for changes after the model has been imported</li>
+            <li><b>+50%</b> for a private commission, which I won't post anywhere</li>
+            <li><b>+50%</b> of the total for priority delivery within one week</li>
+            <li>No refunds at any point.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms">
+    <div class="wrap">
+      <div class="head">
+        <h2>Terms of service</h2>
+        <p>Please read these before you send a request — I'll ask you to confirm you agree with them.</p>
+      </div>
+
+      <div class="banner">
+        <p>VRoid models come with real limitations. The main design may need changes to fit what VRoid can actually do, and there will be some hair, clothing and body clipping. I do my best to prevent it, but a little of it is unavoidable.</p>
+      </div>
+
+      <details open>
+        <summary>General</summary>
+        <ul>
+          <li>Rude behaviour will get the commission cancelled.</li>
+          <li>Always credit my work with my Twitter name, @SurcenVtuber.</li>
+          <li>Don't rename the files. Damage done to them afterwards isn't my responsibility.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Payments</summary>
+        <ul>
+          <li>Commissions are paid in full upfront.</li>
+          <li>No refunds or returns after purchase.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Process</summary>
+        <ul>
+          <li>I don't take work without a clear reference sheet.</li>
+          <li>If you want a model based on fan art, list every colour you want me to use as a proper reference.</li>
+          <li>Minor edits are free. Major edits are charged depending on complexity.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Deadlines and delivery</summary>
+        <ul>
+          <li>I give you a due date at the start, and both of us keep to it.</li>
+          <li>Revisions without a reference sheet, additions requested at a late stage, and revisions after VRoid import all carry a fee.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>How you can use the model</summary>
+        <ul>
+          <li>Personal use only. Commercial use is +50%.</li>
+          <li>Don't resell it without permission.</li>
+          <li>Don't use my model to build other models for sale.</li>
+          <li>Redistributing my artwork is prohibited.</li>
+          <li>Don't claim my work as your own.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>My rights as the creator</summary>
+        <ul>
+          <li>I may use the model to promote myself, in my portfolio or anywhere else.</li>
+          <li>I may stream the process on Twitch, unless it's a private commission.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Your rights as the client</summary>
+        <ul>
+          <li>You get my best customer service.</li>
+          <li>You can use the model for VTubing, MMD or VRChat.</li>
+          <li>You can change the outfit and hair preset.</li>
+          <li>You can modify the model by adding props, expressions, clothes and accessories.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Copyright</summary>
+        <ul>
+          <li>Don't take credit for creating the model or its textures.</li>
+          <li>Don't share, sell or reuse my textures anywhere. They were made for you alone.</li>
+          <li>Don't alter the base model without my consent, or rebuild it to sell.</li>
+          <li>Credit is still required even if the model or textures have been altered.</li>
+          <li>You may not redistribute the model or its assets, modified or not. For example: you can't pass .vroid, VRM or FBX files containing my work to anyone else; models or items I made for you can't go on VRoid Hub as "Download OK"; and they can't be uploaded as public avatars in VRChat.</li>
+          <li>Using my models or assets knowing they were illegally redistributed, transferred or resold is prohibited.</li>
+          <li>They can't be used to slander anyone, or for purposes offensive to public order and morals.</li>
+          <li>Violating the VRoid Studio terms of service and guidelines is prohibited.</li>
+          <li>If you break any of this, legal action may follow.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section id="apply">
+    <div class="wrap">
+      <div class="head">
+        <h2>Start a commission</h2>
+        <p>Six steps from first message to finished files.</p>
+      </div>
+
+      <div class="need">
+        <h3>What I need from you</h3>
+        <ul>
+          <li>A character reference sheet as a PSD with separate layers — the same thing Live2D modelling asks for.</li>
+          <li>If this is an update to an existing model, the .vroid file of the previous one, so the body measurements carry over.</li>
+          <li>The full payment before I start.</li>
+          <li>Confirmation that you've read and agree with the terms above.</li>
+        </ul>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <h3>Check the queue and send a DM</h3>
+          <p>Look at the <a href="https://trello.com/b/0qJ7U0bc/surcenvtuber-commissions" target="_blank" rel="noopener">waiting list</a> first, then message me on Twitter or in my Booth inbox with your reference sheet, front and back. The reference sheet is required.</p>
+        </li>
+        <li>
+          <h3>I reply with the details</h3>
+          <p>Price for your specific commission, expected start and finish dates, and anything else worth settling early.</p>
+        </li>
+        <li>
+          <h3>You join the waiting list</h3>
+          <p>If the terms, price and timing work for you, I add you to the list — there's no fee for that. I contact one person at a time in queue order. If you've changed your mind by the time I reach you, I move to the next person, no hard feelings.</p>
+        </li>
+        <li>
+          <h3>You pay in full</h3>
+          <p>When I get back to you, the full payment goes through <a href="https://paypal.me/Surcen" target="_blank" rel="noopener">PayPal</a> in USD.</p>
+        </li>
+        <li>
+          <h3>You see three previews</h3>
+          <p>I send a preview when the body textures are done, when the hair is done, and when the clothes are done. At each of those points you can ask for small changes at no extra cost.</p>
+        </li>
+        <li>
+          <h3>I deliver the files</h3>
+          <p>Files come to you through Google Drive, and I post the result on my social media, tagging your Twitter unless you tell me not to. Private commissions cost 50% more and never get posted anywhere.</p>
+        </li>
+      </ol>
+
+      <div class="hero-actions" style="margin-top:36px">
+        <a class="btn btn-primary" href="https://twitter.com/SurcenVtuber" target="_blank" rel="noopener">Message me on Twitter</a>
+        <a class="btn btn-ghost" href="https://surcen.booth.pm/" target="_blank" rel="noopener">Booth inbox</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="social">
+      <a href="https://twitter.com/SurcenVtuber" target="_blank" rel="noopener">Twitter</a>
+      <a href="https://surcen.booth.pm/" target="_blank" rel="noopener">Booth</a>
+      <a href="https://www.etsy.com/shop/Surcen" target="_blank" rel="noopener">Etsy</a>
+    </div>
+    <small>© <span id="yr"></span> Surcen. All models, textures and artwork on this site are mine.</small>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lbclose" aria-label="Close image">×</button>
+  <img id="lbimg" src="" alt="">
+</div>
+
+<script>
+/* =========================================================================
+   EDIT HERE — the gallery.
+   Put your image files in an "images" folder next to this index.html,
+   then add or remove lines below. cat: "full" | "outfit" | "hair"
+   ========================================================================= */
+const IMAGES = [
+  {f:"commission-whitetiger2_orig.png", cat:"full",   alt:"White tiger themed full model commission"},
+  {f:"commission-moon_orig.png",        cat:"full",   alt:"Moon themed full model commission"},
+  {f:"commission-han2_orig.png",        cat:"full",   alt:"Full model commission"},
+  {f:"youtubevideo-ground2_orig.png",   cat:"full",   alt:"Full model commission"},
+
+  {f:"website-outfit11.png", cat:"outfit", alt:"Outfit commission"},
+  {f:"website-outfit12.png", cat:"outfit", alt:"Outfit commission"},
+  {f:"website-outfit13.png", cat:"outfit", alt:"Outfit commission"},
+  {f:"website-outfit14.png", cat:"outfit", alt:"Outfit commission"},
+
+  {f:"website-hairshow.png",        cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow2.png",       cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow3.png",       cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow4.png",       cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow5.png",       cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow6.png",       cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow10_orig.png", cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow7_orig.png",  cat:"hair", alt:"Hair preset"},
+  {f:"website-hairshow8_orig.png",  cat:"hair", alt:"Hair preset"},
+  {f:"handsomecoveres.png",         cat:"hair", alt:"Handsome hair preset"},
+  {f:"sistercover2coveres2.png",    cat:"hair", alt:"Sister hair preset"},
+  {f:"berrycoveres.png",            cat:"hair", alt:"Berry hair preset"},
+  {f:"vikingcoveres2.png",          cat:"hair", alt:"Viking hair preset"},
+  {f:"wonderlandes2.png",           cat:"hair", alt:"Wonderland hair preset"},
+  {f:"sideponytailes6.png",         cat:"hair", alt:"Side ponytail hair preset"},
+  {f:"spikycoveres.png",            cat:"hair", alt:"Spiky hair preset"},
+  {f:"luxecover5.png",              cat:"hair", alt:"Luxe hair preset"},
+  {f:"djcoveres.png",               cat:"hair", alt:"DJ hair preset"},
+  {f:"sheepcoveres.png",            cat:"hair", alt:"Sheep hair preset"},
+  {f:"devilcoveres2.png",           cat:"hair", alt:"Devil hair preset"},
+  {f:"rivercover2.png",             cat:"hair", alt:"River hair preset"}
+];
+
+/* While you haven't downloaded the images yet, missing files fall back to the
+   old Weebly copy so the page still looks right. Delete FALLBACK once the
+   images folder is filled in — the old host will stop serving them. */
+const FALLBACK = "https://surcen.weebly.com/uploads/1/4/6/1/146183317/";
+
+const gallery = document.getElementById("gallery");
+function render(cat){
+  gallery.innerHTML = "";
+  IMAGES.filter(i => cat === "all" || i.cat === cat).forEach(i => {
+    const b = document.createElement("button");
+    b.className = "shot";
+    b.type = "button";
+    b.innerHTML = `<img src="images/${i.f}" alt="${i.alt}" loading="lazy"
+                        onerror="this.onerror=null;this.src='${FALLBACK}${i.f}'">`;
+    b.addEventListener("click", () => openLb(b.querySelector("img")));
+    gallery.appendChild(b);
+  });
+}
+render("all");
+
+document.querySelectorAll(".filters button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-selected","false"));
+    btn.setAttribute("aria-selected","true");
+    render(btn.dataset.cat);
+  });
+});
+
+const lb = document.getElementById("lb"), lbimg = document.getElementById("lbimg");
+function openLb(img){ lbimg.src = img.src; lbimg.alt = img.alt; lb.classList.add("on"); document.getElementById("lbclose").focus(); }
+function closeLb(){ lb.classList.remove("on"); lbimg.src = ""; }
+document.getElementById("lbclose").addEventListener("click", closeLb);
+lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
